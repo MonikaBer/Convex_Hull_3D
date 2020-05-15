@@ -1,6 +1,6 @@
 package project.interfaces;
 
-import project.model.Configuration;
+import project.model.configuration.Configuration;
 
 public interface ConfigurationListener {
 

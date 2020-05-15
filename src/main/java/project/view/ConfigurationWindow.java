@@ -1,7 +1,10 @@
 package project.view;
 
 import project.interfaces.ConfigurationListener;
-import project.model.Configuration;
+import project.model.configuration.Configuration;
+import project.model.configuration.CuboidGeneratorConfiguration;
+import project.model.configuration.BallGeneratorConfiguration;
+import project.model.configuration.SphereGeneratorConfiguration;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -37,7 +40,11 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 
         try {
-            Configuration configuration = new Configuration();
+            CuboidGeneratorConfiguration cuboidGeneratorConfiguration = new CuboidGeneratorConfiguration();
+            BallGeneratorConfiguration ballGeneratorConfiguration = new BallGeneratorConfiguration();
+            SphereGeneratorConfiguration sphereGeneratorConfiguration = new SphereGeneratorConfiguration();
+            Configuration configuration = new Configuration(cuboidGeneratorConfiguration,
+                    ballGeneratorConfiguration, sphereGeneratorConfiguration);
             this.configurationListener.configurationChanged(configuration, event.getSource());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Błędne dane", "Uwaga", JOptionPane.WARNING_MESSAGE);

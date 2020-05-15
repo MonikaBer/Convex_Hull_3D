@@ -2,7 +2,7 @@ package project.controller;
 
 import project.interfaces.ConfigurationListener;
 import project.interfaces.VisualizerListener;
-import project.model.Configuration;
+import project.model.configuration.Configuration;
 import project.view.ConfigurationWindow;
 import project.view.Visualizer;
 
