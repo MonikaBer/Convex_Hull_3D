@@ -7,3 +7,7 @@ The project also includes a simple solution visualizer.
 Java 11 (without Garbage Collector), Swing, Maven 
 
 ## Usage
+``bash
+mvn package
+java -jar target/project-1.0.0.jar
+``
