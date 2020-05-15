@@ -1,6 +1,6 @@
 package project.interfaces;
 
-import project.view.Visualizer;
+import project.view.visualizer.Visualizer;
 
 public interface VisualizerListener {
 

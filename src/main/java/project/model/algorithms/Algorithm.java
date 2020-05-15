@@ -1,5 +1,8 @@
 package project.model.algorithms;
 
-public interface Algorithm {
+import javax.vecmath.Point3d;
+import java.util.ArrayList;
 
+public interface Algorithm {
+    ArrayList<Point3d> startAlgorithm(ArrayList<Point3d> points);
 }

@@ -1,6 +1,7 @@
-package project.view;
+package project.view.visualizer;
 
 import project.interfaces.VisualizerListener;
+import project.view.visualizer.panels.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,14 +9,26 @@ import java.awt.event.ActionListener;
 
 public class Visualizer extends JFrame implements ActionListener {
 
+    private CuboidNaivePanel cuboidNaivePanel;
+    private CuboidGiftWrappingPanel cuboidGiftWrappingPanel;
+    private CuboidIncrementalHullPanel cuboidIncrementalHullPanel;
+
+    private BallNaivePanel ballNaivePanel;
+    private BallGiftWrappingPanel ballGiftWrappingPanel;
+    private BallIncrementalHullPanel ballIncrementalHullPanel;
+
+    private SphereNaivePanel sphereNaivePanel;
+    private SphereGiftWrappingPanel sphereGiftWrappingPanel;
+    private SphereIncrementalHullPanel sphereIncrementalHullPanel;
+
     private VisualizerListener visualizerListener;
 
     public Visualizer() {
-        this.initVisualizer();
+        this.createVisualizer();
         this.setParameters();
     }
 
-    public void initVisualizer() {
+    public void createVisualizer() {
 
     }
 

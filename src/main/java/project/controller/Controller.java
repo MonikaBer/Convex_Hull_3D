@@ -2,20 +2,22 @@ package project.controller;
 
 import project.interfaces.ConfigurationListener;
 import project.interfaces.VisualizerListener;
+import project.model.Model;
 import project.model.configuration.Configuration;
-import project.view.ConfigurationWindow;
-import project.view.Visualizer;
+import project.view.configurationWindow.ConfigurationWindow;
+import project.view.visualizer.Visualizer;
 
 public class Controller implements ConfigurationListener, VisualizerListener {
 
 	private ConfigurationWindow configurationWindow;
 	private Visualizer visualizer;
-    //private Model model = null;
+    private Model model;
     
-//    public Controller(View v, Model m) {
-//    	this.view = v;
-//    	this.model = m;
-//    }
+    public Controller(ConfigurationWindow configurationWindow, Visualizer visualizer, Model m) {
+    	this.configurationWindow = configurationWindow;
+    	this.visualizer = visualizer;
+    	this.model = model;
+    }
 
 	public Controller(ConfigurationWindow configurationWindow, Visualizer visualizer) {
 		this.configurationWindow = configurationWindow;
@@ -23,8 +25,9 @@ public class Controller implements ConfigurationListener, VisualizerListener {
 	}
 
 	@Override
-	public void configurationChanged(Configuration Configuration, Object source) {
+	public void configurationChanged(Configuration configuration, Object source) {
 		configurationWindow.dispose();
+		this.model.startCalculation(configuration);
 	}
 
 	@Override

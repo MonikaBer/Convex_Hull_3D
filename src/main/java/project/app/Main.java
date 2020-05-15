@@ -3,8 +3,9 @@ package project.app;
 import javax.swing.SwingUtilities;
 
 import project.controller.Controller;
-import project.view.ConfigurationWindow;
-import project.view.Visualizer;
+import project.model.Model;
+import project.view.configurationWindow.ConfigurationWindow;
+import project.view.visualizer.Visualizer;
 
 public class Main {
 
@@ -15,7 +16,8 @@ public class Main {
 			public void run() {
 				ConfigurationWindow configurationWindow = new ConfigurationWindow();
 				Visualizer visualizer= new Visualizer();
-				Controller controller = new Controller(configurationWindow, visualizer);
+				Model model = new Model();
+				Controller controller = new Controller(configurationWindow, visualizer, model);
 				configurationWindow.addListener(controller);
 				visualizer.addListener(controller);
 			}
