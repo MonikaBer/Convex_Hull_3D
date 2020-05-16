@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 public class Voxelisation extends PointsSetReducer {
 
-    public Voxelisation() {
+    private Double accuracy;
+
+    public Voxelisation(Double accuracy) {
         super();
+        this.accuracy = accuracy;
     }
 
     @Override

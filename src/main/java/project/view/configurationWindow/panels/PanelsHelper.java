@@ -18,10 +18,19 @@ public class PanelsHelper {
         }
     }
 
-    public static double convertToDouble(String a) throws ConversionException {
+    public static Double convertToDouble(String a) throws ConversionException {
         try {
             Double doubleA = Double.parseDouble(a);
             return doubleA;
+        } catch (Exception ex) {
+            throw new ConversionException();
+        }
+    }
+
+    public static Integer convertToInteger(String a) throws ConversionException {
+        try {
+            Integer integerA = Integer.parseInt(a);
+            return integerA;
         } catch (Exception ex) {
             throw new ConversionException();
         }

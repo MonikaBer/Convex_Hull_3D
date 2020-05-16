@@ -15,11 +15,11 @@ public class SpherePanel extends JPanel {
     private JTextField tCenterPointZ;
     private JTextField tRadius;
 
-    public SpherePanel(int x, int y) {
+    public SpherePanel(int width, int height) {
         super();
         this.setLayout(null);
         this.setBorder(BorderFactory.createTitledBorder("Konfiguracja generatora sfery"));
-        this.setPreferredSize(new Dimension(x,y));
+        this.setPreferredSize(new Dimension(width,height));
 
         this.lCenterPoint = new JLabel("Środek sfery:");
         this.lCenterPoint.setBounds(20, 30, 100, 20);

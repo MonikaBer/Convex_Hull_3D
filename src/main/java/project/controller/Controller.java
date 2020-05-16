@@ -29,17 +29,15 @@ public class Controller implements ConfigurationListener, VisualizerListener {
 
 	@Override
 	public void configurationChanged(Configuration configuration, Object source) {
-		if (source == this.configurationWindow.getbOk()) {
-			configurationWindow.dispose();
+		configurationWindow.dispose();
 
-			this.model.initGenerators(configuration);
-			this.model.generatePoints();
-			this.model.reducePoints();
-			ArrayList<ArrayList<Result>> results = this.model.startAlgorithms();
+		this.model.initGenerators(configuration);
+		this.model.generatePoints();
+		this.model.reducePoints();
+		ArrayList<ArrayList<Result>> results = this.model.startAlgorithms();
 
-			this.visualizer.showResults(results);
-			this.visualizer.setVisible(true);
-		}
+		this.visualizer.showResults(results);
+		this.visualizer.setVisible(true);
 	}
 
 	@Override

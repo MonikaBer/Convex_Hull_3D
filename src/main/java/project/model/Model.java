@@ -14,7 +14,6 @@ import project.model.simplifications.Octahedron;
 import project.model.simplifications.PointsSetReducer;
 import project.model.simplifications.Voxelisation;
 
-import javax.vecmath.Point3d;
 import java.util.ArrayList;
 
 public class Model {
@@ -31,12 +30,15 @@ public class Model {
     }
 
     public void initGenerators(Configuration configuration) {
-        this.generators.add(new CuboidGenerator(configuration.getCuboidGeneratorConfiguration()));
-        this.generators.add(new BallGenerator(configuration.getBallGeneratorConfiguration()));
-        this.generators.add(new SphereGenerator(configuration.getSphereGeneratorConfiguration()));
+        this.generators.add(new CuboidGenerator(configuration.getCuboidGeneratorConfiguration(),
+                configuration.getPointsNumber()));
+        this.generators.add(new BallGenerator(configuration.getBallGeneratorConfiguration(),
+                configuration.getPointsNumber()));
+        this.generators.add(new SphereGenerator(configuration.getSphereGeneratorConfiguration(),
+                configuration.getPointsNumber()));
 
         if (configuration.getSimplificationType() == Voxelisation.class) {
-            this.pointsSetReducer = new Voxelisation();
+            this.pointsSetReducer = new Voxelisation(configuration.getAccuracy());
         } else {
             this.pointsSetReducer = new Octahedron();
         }

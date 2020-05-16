@@ -34,11 +34,11 @@ public class CuboidPanel extends JPanel {
     private JTextField tPointCY;
     private JTextField tPointCZ;
 
-    public CuboidPanel(int x, int y) {
+    public CuboidPanel(int width, int height) {
         super();
         this.setLayout(null);
         this.setBorder(BorderFactory.createTitledBorder("Konfiguracja generatora prostopadłościanu"));
-        this.setPreferredSize(new Dimension(x,y));
+        this.setPreferredSize(new Dimension(width,height));
 
         this.lMainPoint = new JLabel("Główny wierzchołek:");
         this.lMainPoint.setBounds(20, 30, 150, 20);

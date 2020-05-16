@@ -9,14 +9,14 @@ public class SphereGenerator extends PointsGenerator  {
 
     private SphereGeneratorConfiguration sphereGeneratorConfiguration;
 
-    public SphereGenerator(SphereGeneratorConfiguration sphereGeneratorConfiguration) {
-        super();
+    public SphereGenerator(SphereGeneratorConfiguration sphereGeneratorConfiguration, Integer pointsNumber) {
+        super(pointsNumber);
         this.sphereGeneratorConfiguration = sphereGeneratorConfiguration;
     }
 
     @Override
     public ArrayList<Point3d> generate() {
-        ArrayList<Point3d> points = new ArrayList<Point3d>();
+        ArrayList<Point3d> points = new ArrayList<>();
         //generate points
         return points;
     }

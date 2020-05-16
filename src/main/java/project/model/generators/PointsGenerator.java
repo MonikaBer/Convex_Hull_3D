@@ -2,5 +2,9 @@ package project.model.generators;
 
 public abstract class PointsGenerator implements Generator {
 
-    public PointsGenerator(){}
+    private Integer pointsNumber;
+
+    public PointsGenerator(Integer pointsNumber) {
+        this.pointsNumber = pointsNumber;
+    }
 }

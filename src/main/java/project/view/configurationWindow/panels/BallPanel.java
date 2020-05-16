@@ -15,11 +15,11 @@ public class BallPanel extends JPanel {
     private JTextField tCenterPointZ;
     private JTextField tRadius;
 
-    public BallPanel(int x, int y) {
+    public BallPanel(int width, int height) {
         super();
         this.setLayout(null);
         this.setBorder(BorderFactory.createTitledBorder("Konfiguracja generatora kuli"));
-        this.setPreferredSize(new Dimension(x,y));
+        this.setPreferredSize(new Dimension(width,height));
 
         this.lCenterPoint = new JLabel("Środek kuli:");
         this.lCenterPoint.setBounds(20, 30, 100, 20);
