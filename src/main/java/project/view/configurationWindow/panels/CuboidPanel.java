@@ -93,43 +93,43 @@ public class CuboidPanel extends JPanel {
         this.lPointCZ.setBounds(360, 120, 10, 20);
         this.add(this.lPointCZ);
 
-        this.tMainPointX = new JTextField();
+        this.tMainPointX = new JTextField("0");
         this.tMainPointX.setBounds(220, 30, 40, 20);
         this.add(this.tMainPointX);
-        this.tMainPointY = new JTextField();
+        this.tMainPointY = new JTextField("0");
         this.tMainPointY.setBounds(300, 30, 40, 20);
         this.add(this.tMainPointY);
-        this.tMainPointZ = new JTextField();
+        this.tMainPointZ = new JTextField("0");
         this.tMainPointZ.setBounds(380, 30, 40, 20);
         this.add(this.tMainPointZ);
 
-        this.tPointAX = new JTextField();
+        this.tPointAX = new JTextField("100");
         this.tPointAX.setBounds(220, 60, 40, 20);
         this.add(this.tPointAX);
-        this.tPointAY = new JTextField();
+        this.tPointAY = new JTextField("0");
         this.tPointAY.setBounds(300, 60, 40, 20);
         this.add(this.tPointAY);
-        this.tPointAZ = new JTextField();
+        this.tPointAZ = new JTextField("0");
         this.tPointAZ.setBounds(380, 60, 40, 20);
         this.add(this.tPointAZ);
 
-        this.tPointBX = new JTextField();
+        this.tPointBX = new JTextField("0");
         this.tPointBX.setBounds(220, 90, 40, 20);
         this.add(this.tPointBX);
-        this.tPointBY = new JTextField();
+        this.tPointBY = new JTextField("100");
         this.tPointBY.setBounds(300, 90, 40, 20);
         this.add(this.tPointBY);
-        this.tPointBZ = new JTextField();
+        this.tPointBZ = new JTextField("0");
         this.tPointBZ.setBounds(380, 90, 40, 20);
         this.add(this.tPointBZ);
 
-        this.tPointCX = new JTextField();
+        this.tPointCX = new JTextField("0");
         this.tPointCX.setBounds(220, 120, 40, 20);
         this.add(this.tPointCX);
-        this.tPointCY = new JTextField();
+        this.tPointCY = new JTextField("0");
         this.tPointCY.setBounds(300, 120, 40, 20);
         this.add(this.tPointCY);
-        this.tPointCZ = new JTextField();
+        this.tPointCZ = new JTextField("100");
         this.tPointCZ.setBounds(380, 120, 40, 20);
         this.add(this.tPointCZ);
     }

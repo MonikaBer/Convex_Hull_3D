@@ -24,6 +24,8 @@ public class SimplificationPanel extends JPanel {
         this.rbOctahedron.setBounds(250, 15, 150, 20);
         this.bgSimplification.add(this.rbOctahedron);
         this.add(rbOctahedron);
+
+        this.rbVoxelisation.setSelected(true);
     }
 
     public String getSelectedSimplification() {

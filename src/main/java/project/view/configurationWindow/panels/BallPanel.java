@@ -38,17 +38,17 @@ public class BallPanel extends JPanel {
         this.lCenterPointZ.setBounds(300, 30, 10, 20);
         this.add(this.lCenterPointZ);
 
-        this.tCenterPointX = new JTextField();
+        this.tCenterPointX = new JTextField("50");
         this.tCenterPointX.setBounds(160, 30, 40, 20);
         this.add(this.tCenterPointX);
-        this.tCenterPointY = new JTextField();
+        this.tCenterPointY = new JTextField("50");
         this.tCenterPointY.setBounds(240, 30, 40, 20);
         this.add(this.tCenterPointY);
-        this.tCenterPointZ = new JTextField();
+        this.tCenterPointZ = new JTextField("50");
         this.tCenterPointZ.setBounds(320, 30, 40, 20);
         this.add(this.tCenterPointZ);
 
-        this.tRadius = new JTextField();
+        this.tRadius = new JTextField("50");
         this.tRadius.setBounds(160, 60, 80, 20);
         this.add(this.tRadius);
     }

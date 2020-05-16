@@ -1,13 +1,21 @@
 package project.model.algorithms;
 
+import project.model.Result;
+
 import javax.vecmath.Point3d;
 import java.util.ArrayList;
 
-public class GiftWrappingAlgorithm implements Algorithm {
+public class GiftWrappingAlgorithm extends ConvexHullAlgorithm {
+
+    public GiftWrappingAlgorithm() {
+        super();
+    }
 
     @Override
-    public ArrayList<Point3d> startAlgorithm(ArrayList<Point3d> points) {
-
-        return points;
+    public Result startAlgorithm(ArrayList<Point3d> points) {
+        ArrayList<Point3d> convexHull = new ArrayList<>();
+        //set runtime
+        Double runtime = 0.0;
+        return new Result(convexHull, runtime);
     }
 }

@@ -1,50 +1,72 @@
 package project.model;
 
+import project.model.algorithms.ConvexHullAlgorithm;
 import project.model.configuration.Configuration;
 import project.model.generators.BallGenerator;
 import project.model.generators.CuboidGenerator;
+import project.model.generators.PointsGenerator;
 import project.model.generators.SphereGenerator;
+import project.model.pointsSets.BallPointsSet;
+import project.model.pointsSets.CuboidPointsSet;
+import project.model.pointsSets.PointsSet;
+import project.model.pointsSets.SpherePointsSet;
+import project.model.simplifications.Octahedron;
+import project.model.simplifications.PointsSetReducer;
+import project.model.simplifications.Voxelisation;
 
 import javax.vecmath.Point3d;
 import java.util.ArrayList;
 
 public class Model {
 
-    private CuboidGenerator cuboidGenerator;
-    private BallGenerator ballGenerator;
-    private SphereGenerator sphereGenerator;
+    private ArrayList<PointsGenerator> generators;
+    private ArrayList<ConvexHullAlgorithm> algorithms;
+    private ArrayList<PointsSet> pointsSets;
+    private PointsSetReducer pointsSetReducer;
 
-    private ArrayList<Point3d> cuboidPoints;
-    private ArrayList<Point3d> ballPoints;
-    private ArrayList<Point3d> spherePoints;
+    public Model(){
+        this.generators = new ArrayList<>();
+        this.algorithms = new ArrayList<>();
+        this.pointsSets = new ArrayList<>();
+    }
 
-    private ArrayList<Point3d> cuboidPointsNaiveResult;
-    private ArrayList<Point3d> ballPointsNaiveResult;
-    private ArrayList<Point3d> spherePointsNaiveResult;
+    public void initGenerators(Configuration configuration) {
+        this.generators.add(new CuboidGenerator(configuration.getCuboidGeneratorConfiguration()));
+        this.generators.add(new BallGenerator(configuration.getBallGeneratorConfiguration()));
+        this.generators.add(new SphereGenerator(configuration.getSphereGeneratorConfiguration()));
 
-    private ArrayList<Point3d> cuboidPointsGiftWrappingResult;
-    private ArrayList<Point3d> ballPointsGiftWrappingResult;
-    private ArrayList<Point3d> spherePointsGiftWrappingResult;
+        if (configuration.getSimplificationType() == Voxelisation.class) {
+            this.pointsSetReducer = new Voxelisation();
+        } else {
+            this.pointsSetReducer = new Octahedron();
+        }
+    }
 
-    private ArrayList<Point3d> cuboidPointsIncrementalHullResult;
-    private ArrayList<Point3d> ballPointsIncrementalHullResult;
-    private ArrayList<Point3d> spherePointsIncrementalHullResult;
+    public void generatePoints() {
+        this.pointsSets.add(new CuboidPointsSet());
+        this.pointsSets.add(new BallPointsSet());
+        this.pointsSets.add(new SpherePointsSet());
 
-    public Model(){}
+        for (int i = 0; i < this.pointsSets.size(); i++) {
+            this.pointsSets.get(i).setPoints(this.generators.get(i).generate());
+        }
+    }
 
-    public void startCalculation(Configuration configuration) {
-        this.cuboidGenerator = new CuboidGenerator(configuration.getCuboidGeneratorConfiguration());
-        this.ballGenerator = new BallGenerator(configuration.getBallGeneratorConfiguration());
-        this.sphereGenerator = new SphereGenerator(configuration.getSphereGeneratorConfiguration());
+    public void reducePoints() {
+        for (int i = 0; i < this.pointsSets.size(); i++) {
+            this.pointsSets.get(i).setPoints(this.pointsSetReducer.simplify(this.pointsSets.get(i).getPoints()));
+        }
+    }
 
-        this.cuboidPoints = this.cuboidGenerator.generate();
-        this.ballPoints = this.ballGenerator.generate();
-        this.spherePoints = this.sphereGenerator.generate();
-
-//        if (configuration.getSimplificationType().equals("voxelisation")) {
-//
-//        } else {
-//
-//        }
+    public ArrayList<ArrayList<Result>> startAlgorithms() {
+        ArrayList<ArrayList<Result>> results = new ArrayList<>();
+        for (int i = 0; i < this.pointsSets.size(); i++) {
+            ArrayList<Result> onePointsSetResults = new ArrayList<>();
+            for (int j = 0; j < this.algorithms.size(); j++) {
+                onePointsSetResults.add(this.algorithms.get(j).startAlgorithm(this.pointsSets.get(i).getPoints()));
+            }
+            results.add(onePointsSetResults);
+        }
+        return results;
     }
 }

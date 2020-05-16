@@ -6,6 +6,8 @@ import project.model.configuration.Configuration;
 import project.model.configuration.CuboidGeneratorConfiguration;
 import project.model.configuration.BallGeneratorConfiguration;
 import project.model.configuration.SphereGeneratorConfiguration;
+import project.model.simplifications.Octahedron;
+import project.model.simplifications.Voxelisation;
 import project.view.configurationWindow.panels.*;
 
 import javax.swing.*;
@@ -80,6 +82,10 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    public JButton getbOk() {
+        return this.buttonPanel.getbOk();
+    }
+
     public void addListener(ConfigurationListener configurationListener) {
         this.configurationListener = configurationListener;
     }
@@ -116,7 +122,12 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
             SphereGeneratorConfiguration sphereGeneratorConfiguration =
                     new SphereGeneratorConfiguration(centerPoint, radius);
 
-            String simplificationType = this.simplificationPanel.getSelectedSimplification();
+            Class simplificationType;
+            if (this.simplificationPanel.getSelectedSimplification().equals("voxelisation")) {
+                simplificationType = Voxelisation.class;
+            } else {
+                simplificationType = Octahedron.class;
+            }
 
             Configuration configuration = new Configuration(cuboidGeneratorConfiguration, ballGeneratorConfiguration,
                     sphereGeneratorConfiguration, simplificationType);

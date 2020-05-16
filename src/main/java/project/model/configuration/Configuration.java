@@ -5,12 +5,12 @@ public class Configuration {
     private CuboidGeneratorConfiguration cuboidGeneratorConfiguration;
     private BallGeneratorConfiguration ballGeneratorConfiguration;
     private SphereGeneratorConfiguration sphereGeneratorConfiguration;
-    private String simplificationType;
+    private Class simplificationType;
 
     public Configuration(CuboidGeneratorConfiguration cuboidGeneratorConfiguration,
                          BallGeneratorConfiguration ballGeneratorConfiguration,
                          SphereGeneratorConfiguration sphereGeneratorConfiguration,
-                         String simplificationType) {
+                         Class simplificationType) {
 
         this.cuboidGeneratorConfiguration = cuboidGeneratorConfiguration;
         this.ballGeneratorConfiguration = ballGeneratorConfiguration;
@@ -30,7 +30,7 @@ public class Configuration {
         return sphereGeneratorConfiguration;
     }
 
-    public String getSimplificationType() {
+    public Class getSimplificationType() {
         return simplificationType;
     }
 }
