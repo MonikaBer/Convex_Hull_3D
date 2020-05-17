@@ -1,6 +1,7 @@
 package project.view.configurationWindow.panels;
 
 import project.exceptions.ConversionException;
+import project.model.Vector3d;
 
 import javax.vecmath.Point3d;
 
@@ -13,6 +14,18 @@ public class PanelsHelper {
             Double doubleZ = Double.parseDouble(z);
             Point3d point3d = new Point3d(doubleX, doubleY, doubleZ);
             return point3d;
+        } catch (Exception ex) {
+            throw new ConversionException();
+        }
+    }
+
+    public static Vector3d convertToVector3d(String x, String y, String z) throws ConversionException {
+        try {
+            Double doubleX = Double.parseDouble(x);
+            Double doubleY = Double.parseDouble(y);
+            Double doubleZ = Double.parseDouble(z);
+            Vector3d vector3d = new Vector3d(doubleX, doubleY, doubleZ);
+            return vector3d;
         } catch (Exception ex) {
             throw new ConversionException();
         }

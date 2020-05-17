@@ -1,19 +1,20 @@
 package project.model.configuration;
 
 import javax.vecmath.Point3d;
+import javax.vecmath.Tuple3d;
 
 public class CuboidGeneratorConfiguration {
 
     private Point3d mainPoint;
-    private Point3d pointA;
-    private Point3d pointB;
-    private Point3d pointC;
+    private Tuple3d vectorA;
+    private Tuple3d vectorB;
+    private Tuple3d vectorC;
 
-    public CuboidGeneratorConfiguration(Point3d mainPoint, Point3d pointA, Point3d pointB, Point3d pointC) {
+    public CuboidGeneratorConfiguration(Point3d mainPoint, Tuple3d vectorA, Tuple3d vectorB, Tuple3d vectorC) {
         this.mainPoint = mainPoint;
-        this.pointA = pointA;
-        this.pointB = pointB;
-        this.pointC = pointC;
+        this.vectorA = vectorA;
+        this.vectorB = vectorB;
+        this.vectorC = vectorC;
     }
 
     public Point3d getMainPoint() {
@@ -24,27 +25,27 @@ public class CuboidGeneratorConfiguration {
         this.mainPoint = mainPoint;
     }
 
-    public Point3d getPointA() {
-        return pointA;
+    public Tuple3d getVectorA() {
+        return vectorA;
     }
 
-    public void setPointA(Point3d pointA) {
-        this.pointA = pointA;
+    public void setVectorA(Tuple3d vectorA) {
+        this.vectorA = vectorA;
     }
 
-    public Point3d getPointB() {
-        return pointB;
+    public Tuple3d getVectorB() {
+        return vectorB;
     }
 
-    public void setPointB(Point3d pointB) {
-        this.pointB = pointB;
+    public void setVectorB(Tuple3d vectorB) {
+        this.vectorB = vectorB;
     }
 
-    public Point3d getPointC() {
-        return pointC;
+    public Tuple3d getVectorC() {
+        return vectorC;
     }
 
-    public void setPointC(Point3d pointC) {
-        this.pointC = pointC;
+    public void setVectorC(Tuple3d vectorC) {
+        this.vectorC = vectorC;
     }
 }

@@ -2,6 +2,7 @@ package project.view.configurationWindow;
 
 import project.exceptions.ConversionException;
 import project.interfaces.ConfigurationListener;
+import project.model.Vector3d;
 import project.model.configuration.Configuration;
 import project.model.configuration.CuboidGeneratorConfiguration;
 import project.model.configuration.BallGeneratorConfiguration;
@@ -98,17 +99,17 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
                 Point3d mainPoint = convertToPoint3d(this.cuboidPanel.gettMainPointX().getText(),
                                                      this.cuboidPanel.gettMainPointY().getText(),
                                                      this.cuboidPanel.gettMainPointZ().getText());
-                Point3d pointA = convertToPoint3d(this.cuboidPanel.gettPointAX().getText(),
-                                                  this.cuboidPanel.gettPointAY().getText(),
-                                                  this.cuboidPanel.gettPointAZ().getText());
-                Point3d pointB = convertToPoint3d(this.cuboidPanel.gettPointBX().getText(),
-                                                  this.cuboidPanel.gettPointBY().getText(),
-                                                  this.cuboidPanel.gettPointBZ().getText());
-                Point3d pointC = convertToPoint3d(this.cuboidPanel.gettPointCX().getText(),
-                                                  this.cuboidPanel.gettPointCY().getText(),
-                                                  this.cuboidPanel.gettPointCZ().getText());
+                Vector3d vectorA = convertToVector3d(this.cuboidPanel.gettVectorAX().getText(),
+                                                  this.cuboidPanel.gettVectorAY().getText(),
+                                                  this.cuboidPanel.gettVectorAZ().getText());
+                Vector3d vectorB = convertToVector3d(this.cuboidPanel.gettVectorBX().getText(),
+                                                  this.cuboidPanel.gettVectorBY().getText(),
+                                                  this.cuboidPanel.gettVectorBZ().getText());
+                Vector3d vectorC = convertToVector3d(this.cuboidPanel.gettVectorCX().getText(),
+                                                  this.cuboidPanel.gettVectorCY().getText(),
+                                                  this.cuboidPanel.gettVectorCZ().getText());
                 CuboidGeneratorConfiguration cuboidGeneratorConfiguration =
-                        new CuboidGeneratorConfiguration(mainPoint, pointA, pointB, pointC);
+                        new CuboidGeneratorConfiguration(mainPoint, vectorA, vectorB, vectorC);
 
                 Point3d centerPoint = convertToPoint3d(this.ballPanel.gettCenterPointX().getText(),
                                                        this.ballPanel.gettCenterPointY().getText(),
