@@ -14,7 +14,29 @@ public class Voxelisation extends PointsSetReducer {
 
     @Override
     public ArrayList<Point3d> simplify(ArrayList<Point3d> points) {
-        //divide the space into voxels and reduce points inside the same voxel
-        return points;
+        ArrayList<Point3d> reducedPoints = new ArrayList<>();
+
+        pointsLoop:
+        for (int i = 0; i < points.size(); i++) {
+            for (int j = 0; j < reducedPoints.size(); j++) {
+                if (areTwoPointsInTheSameVoxel(points.get(i), reducedPoints.get(j))) {
+                    continue pointsLoop;
+                }
+            }
+            reducedPoints.add(points.get(i));
+        }
+
+        return reducedPoints;
+    }
+
+    public boolean areTwoPointsInTheSameVoxel(Point3d point1, Point3d point2) {
+        Double voxelEdge = accuracy / Math.sqrt(3);
+
+        if (Math.abs(point1.x - point2.x) <= voxelEdge && Math.abs(point1.y - point2.y) <= voxelEdge
+                && Math.abs(point1.z - point2.z) <= voxelEdge ) {
+
+            return true;
+        }
+        return false;
     }
 }
