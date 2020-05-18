@@ -1,9 +1,9 @@
 package project.model.generators;
 
-import project.model.Vector3d;
 import project.model.configuration.CuboidGeneratorConfiguration;
 
 import javax.vecmath.Point3d;
+import javax.vecmath.Vector3d;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -28,8 +28,8 @@ public class CuboidGenerator extends PointsGenerator {
 
         for (int i = 0; i < this.pointsNumber; i++) {
             numberA = 0D + random.nextDouble() * (1D - 0D);
-            numberB = 0D + random.nextDouble() * (1D - 0D);
-            numberC = 0D + random.nextDouble() * (1D - 0D);
+            numberB = random.nextDouble();
+            numberC = random.nextDouble();
 
             tempVectorA.x = this.cuboidGeneratorConfiguration.getVectorA().x * numberA;
             tempVectorA.y = this.cuboidGeneratorConfiguration.getVectorA().y * numberA;

@@ -1,9 +1,9 @@
 package project.view.configurationWindow.panels;
 
 import project.exceptions.ConversionException;
-import project.model.Vector3d;
 
 import javax.vecmath.Point3d;
+import javax.vecmath.Vector3d;
 
 public class PanelsHelper {
 

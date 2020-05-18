@@ -2,7 +2,6 @@ package project.view.configurationWindow;
 
 import project.exceptions.ConversionException;
 import project.interfaces.ConfigurationListener;
-import project.model.Vector3d;
 import project.model.configuration.Configuration;
 import project.model.configuration.CuboidGeneratorConfiguration;
 import project.model.configuration.BallGeneratorConfiguration;
@@ -13,6 +12,7 @@ import project.view.configurationWindow.panels.*;
 
 import javax.swing.*;
 import javax.vecmath.Point3d;
+import javax.vecmath.Vector3d;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

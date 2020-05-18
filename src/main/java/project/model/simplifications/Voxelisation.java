@@ -29,7 +29,7 @@ public class Voxelisation extends PointsSetReducer {
         return reducedPoints;
     }
 
-    public boolean areTwoPointsInTheSameVoxel(Point3d point1, Point3d point2) {
+    private boolean areTwoPointsInTheSameVoxel(Point3d point1, Point3d point2) {
         Double voxelEdge = accuracy / Math.sqrt(3);
 
         if (Math.abs(point1.x - point2.x) <= voxelEdge && Math.abs(point1.y - point2.y) <= voxelEdge
