@@ -1,19 +1,18 @@
 package project.model;
 
-import javax.vecmath.Point3d;
 import java.util.ArrayList;
 
 public class Result {
 
-    private ArrayList<Point3d> result;
+    private ArrayList<Face> result;
     private double runtime;
 
-    public Result(ArrayList<Point3d> result, double runtime) {
+    public Result(ArrayList<Face> result, double runtime) {
         this.result = result;
         this.runtime = runtime;
     }
 
-    public ArrayList<Point3d> getResult() {
+    public ArrayList<Face> getResult() {
         return result;
     }
 
