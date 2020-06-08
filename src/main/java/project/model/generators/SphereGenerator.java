@@ -10,7 +10,7 @@ public class SphereGenerator extends PointsGenerator  {
 
     private final SphereGeneratorConfiguration sphereGeneratorConfiguration;
 
-    public SphereGenerator(SphereGeneratorConfiguration sphereGeneratorConfiguration, Integer pointsNumber) {
+    public SphereGenerator(SphereGeneratorConfiguration sphereGeneratorConfiguration, int pointsNumber) {
         super(pointsNumber);
         this.sphereGeneratorConfiguration = sphereGeneratorConfiguration;
     }
@@ -22,11 +22,11 @@ public class SphereGenerator extends PointsGenerator  {
         double x, y, z, tempX, tempY, tempZ, angle, r;
 
         for (int i = 0; i < this.pointsNumber; i++) {
-            tempZ = -this.sphereGeneratorConfiguration.getRadius() + random.nextDouble() *
+            tempZ = -1D * this.sphereGeneratorConfiguration.getRadius() + random.nextDouble() *
                     2D * this.sphereGeneratorConfiguration.getRadius();                      //from -r to r
             angle = random.nextDouble() * 360D;                                              //from 0 to 360 degrees
 
-            r = Math.sqrt(Math.pow(this.sphereGeneratorConfiguration.getRadius(),2) - Math.pow(tempZ,2));
+            r = Math.sqrt(Math.pow(this.sphereGeneratorConfiguration.getRadius(), 2) - Math.pow(tempZ, 2));
             tempX = r * Math.cos(angle);
             tempY = r * Math.sin(angle);
 

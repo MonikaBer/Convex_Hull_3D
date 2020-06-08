@@ -22,16 +22,12 @@ public class Controller implements ConfigurationListener, VisualizerListener {
     	this.model = model;
     }
 
-	public Controller(ConfigurationWindow configurationWindow, Visualizer visualizer) {
-		this.configurationWindow = configurationWindow;
-		this.visualizer = visualizer;
-	}
-
 	@Override
 	public void configurationChanged(Configuration configuration, Object source) {
 		configurationWindow.dispose();
 
 		this.model.initGenerators(configuration);
+		this.model.createAlgorithmsList();
 		this.model.generatePoints();
 		this.model.reducePoints();
 		ArrayList<ArrayList<Result>> results = this.model.startAlgorithms();

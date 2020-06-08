@@ -1,6 +1,9 @@
 package project.model;
 
 import project.model.algorithms.ConvexHullAlgorithm;
+import project.model.algorithms.GiftWrappingAlgorithm;
+import project.model.algorithms.IncrementalHullAlgorithm;
+import project.model.algorithms.NaiveAlgorithm;
 import project.model.configuration.Configuration;
 import project.model.generators.BallGenerator;
 import project.model.generators.CuboidGenerator;
@@ -42,6 +45,12 @@ public class Model {
         } else {
             this.pointsSetReducer = new Octahedron();
         }
+    }
+
+    public void createAlgorithmsList() {
+        this.algorithms.add(new NaiveAlgorithm());
+        this.algorithms.add(new GiftWrappingAlgorithm());
+        this.algorithms.add(new IncrementalHullAlgorithm());
     }
 
     public void generatePoints() {

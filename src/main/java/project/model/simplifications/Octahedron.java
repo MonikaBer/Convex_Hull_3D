@@ -113,7 +113,6 @@ public class Octahedron extends PointsSetReducer {
                     for (int l = k+1; l < extremePoints.size(); l++) {
                         if (isPointInsideTetrahedron(extremePoints.get(i), extremePoints.get(j), extremePoints.get(k),
                                                      extremePoints.get(l), checkedPoint)) {
-
                             return true;
                         }
                     }
@@ -127,9 +126,9 @@ public class Octahedron extends PointsSetReducer {
         Vector3d normal = new Vector3d();
         normal.cross(new Vector3d(vertex2.x - vertex1.x, vertex2.y - vertex1.y, vertex2.z - vertex1.z),
                      new Vector3d(vertex3.x - vertex1.x, vertex3.y - vertex1.y, vertex3.z - vertex1.z));
-        Double dotVertex4 = normal.dot(new Vector3d(
+        double dotVertex4 = normal.dot(new Vector3d(
                                      vertex4.x - vertex1.x, vertex4.y - vertex1.y, vertex4.z - vertex1.z));
-        Double dotCheckedPoint = normal.dot(new Vector3d(checkedPoint.x - vertex1.x, checkedPoint.y - vertex1.y,
+        double dotCheckedPoint = normal.dot(new Vector3d(checkedPoint.x - vertex1.x, checkedPoint.y - vertex1.y,
                                                          checkedPoint.z - vertex1.z));
         return Math.signum(dotVertex4) == Math.signum(dotCheckedPoint);
     }
@@ -137,7 +136,7 @@ public class Octahedron extends PointsSetReducer {
     private boolean isPointInsideTetrahedron(Point3d vertex1, Point3d vertex2, Point3d vertex3, Point3d vertex4,
                                        Point3d checkedPoint) {
 
-        return sameSide(vertex1, vertex2, vertex3, vertex4, checkedPoint) &&
+        return  sameSide(vertex1, vertex2, vertex3, vertex4, checkedPoint) &&
                 sameSide(vertex2, vertex3, vertex4, vertex1, checkedPoint) &&
                 sameSide(vertex3, vertex4, vertex1, vertex2, checkedPoint) &&
                 sameSide(vertex4, vertex1, vertex2, vertex3, checkedPoint);

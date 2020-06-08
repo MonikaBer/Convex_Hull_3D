@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Voxelisation extends PointsSetReducer {
 
-    private Double accuracy;
+    private double accuracy;
 
-    public Voxelisation(Double accuracy) {
+    public Voxelisation(double accuracy) {
         super();
         this.accuracy = accuracy;
     }
@@ -30,7 +30,7 @@ public class Voxelisation extends PointsSetReducer {
     }
 
     private boolean areTwoPointsInTheSameVoxel(Point3d point1, Point3d point2) {
-        Double voxelEdge = accuracy / Math.sqrt(3);
+        double voxelEdge = this.accuracy / Math.sqrt(3);
 
         if (Math.abs(point1.x - point2.x) <= voxelEdge && Math.abs(point1.y - point2.y) <= voxelEdge
                 && Math.abs(point1.z - point2.z) <= voxelEdge ) {

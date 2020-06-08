@@ -10,7 +10,7 @@ public class BallGenerator extends PointsGenerator {
 
     private final BallGeneratorConfiguration ballGeneratorConfiguration;
 
-    public BallGenerator(BallGeneratorConfiguration ballGeneratorConfiguration, Integer pointsNumber) {
+    public BallGenerator(BallGeneratorConfiguration ballGeneratorConfiguration, int pointsNumber) {
         super(pointsNumber);
         this.ballGeneratorConfiguration = ballGeneratorConfiguration;
     }
@@ -39,7 +39,6 @@ public class BallGenerator extends PointsGenerator {
             //check if point (x,y,z) is inside the ball
             if (point.distance(this.ballGeneratorConfiguration.getCenter()) <=
                     this.ballGeneratorConfiguration.getRadius()) {
-
                 points.add(point);
             }
         }

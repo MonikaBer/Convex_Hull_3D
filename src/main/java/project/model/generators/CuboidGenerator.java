@@ -11,7 +11,7 @@ public class CuboidGenerator extends PointsGenerator {
 
     private final CuboidGeneratorConfiguration cuboidGeneratorConfiguration;
 
-    public CuboidGenerator(CuboidGeneratorConfiguration cuboidGeneratorConfiguration, Integer pointsNumber) {
+    public CuboidGenerator(CuboidGeneratorConfiguration cuboidGeneratorConfiguration, int pointsNumber) {
         super(pointsNumber);
         this.cuboidGeneratorConfiguration = cuboidGeneratorConfiguration;
     }
@@ -27,7 +27,7 @@ public class CuboidGenerator extends PointsGenerator {
         double x, y, z;
 
         for (int i = 0; i < this.pointsNumber; i++) {
-            numberA = 0D + random.nextDouble() * (1D - 0D);
+            numberA = random.nextDouble();
             numberB = random.nextDouble();
             numberC = random.nextDouble();
 
@@ -49,7 +49,6 @@ public class CuboidGenerator extends PointsGenerator {
 
             points.add(new Point3d(x, y, z));
         }
-
         return points;
     }
 }

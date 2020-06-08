@@ -16,7 +16,7 @@ public class IncrementalHullAlgorithm extends ConvexHullAlgorithm {
     public Result startAlgorithm(ArrayList<Point3d> points) {
         ArrayList<Face> convexHull = new ArrayList<>();
         //set runtime
-        Double runtime = 0.0;
+        double runtime = 0.0;
         return new Result(convexHull, runtime);
     }
 }

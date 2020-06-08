@@ -17,7 +17,7 @@ public class GiftWrappingAlgorithm extends ConvexHullAlgorithm {
         ArrayList<Face> convexHullFaces = new ArrayList<>();
         ArrayList<Point3d> convexHullPoints = new ArrayList<>();
         //start runtime
-        Double runtime = 0.0;
+        double runtime = 0.0;
 
         //find a first face of convex hull
         Point3d point1;  //minimum point

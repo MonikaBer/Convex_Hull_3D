@@ -114,7 +114,7 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
                 Point3d centerPoint = convertToPoint3d(this.ballPanel.getCenterPointX(),
                                                        this.ballPanel.getCenterPointY(),
                                                        this.ballPanel.getCenterPointZ());
-                Double radius = convertToDouble(this.ballPanel.getRadius());
+                double radius = convertToDouble(this.ballPanel.getRadius());
                 BallGeneratorConfiguration ballGeneratorConfiguration = new BallGeneratorConfiguration(centerPoint, radius);
 
                 centerPoint = convertToPoint3d(this.spherePanel.getCenterPointX(),
@@ -124,10 +124,10 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
                 SphereGeneratorConfiguration sphereGeneratorConfiguration =
                         new SphereGeneratorConfiguration(centerPoint, radius);
 
-                Integer pointsNumber = convertToInteger(this.pointsNumberPanel.getPointsNumber());
+                int pointsNumber = convertToInteger(this.pointsNumberPanel.getPointsNumber());
 
                 Object simplificationType;
-                Double accuracy = 0.0;
+                double accuracy = 0.0;
                 if (this.simplificationPanel.getSelectedSimplification().equals("voxelisation")) {
                     simplificationType = Voxelisation.class;
                     accuracy = convertToDouble(this.simplificationPanel.getAccuracy());
