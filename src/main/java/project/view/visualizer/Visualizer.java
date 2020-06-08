@@ -15,7 +15,7 @@ public class Visualizer extends JFrame implements ActionListener {
 
     private ArrayList<ResultPanel> panels;
 
-    private VisualizerListener visualizerListener;
+    private VisualizerListener visualizerListener = null;
 
     public Visualizer() {
         this.createPanels();
@@ -39,7 +39,7 @@ public class Visualizer extends JFrame implements ActionListener {
         this.bottomPanel.setLayout(new BoxLayout(this.bottomPanel, BoxLayout.X_AXIS));
         this.mainPanel.add(this.bottomPanel);
 
-        this.panels = new ArrayList<ResultPanel>();
+        this.panels = new ArrayList<>();
 
         this.panels.add(new ResultPanel(300, 300, "cuboid", "naive"));
         this.upperPanel.add(this.panels.get(this.panels.size()-1));

@@ -27,7 +27,7 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
     private SpherePanel spherePanel;
     private PointsNumberPanel pointsNumberPanel;
     private ButtonPanel buttonPanel;
-    private ConfigurationListener configurationListener;
+    private ConfigurationListener configurationListener = null;
 
     public ConfigurationWindow() {
         this.createConfigurationWindow();
@@ -83,7 +83,7 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
     public void setParameters() {
         this.setSize(840, 380);
         this.setResizable(false);
-        this.setTitle("Konfiguracja parametrów");
+        this.setTitle("Konfiguracja parametrów wejściowych");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -96,41 +96,41 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == this.buttonPanel.getbOk()) {
             try {
-                Point3d mainPoint = convertToPoint3d(this.cuboidPanel.gettMainPointX().getText(),
-                                                     this.cuboidPanel.gettMainPointY().getText(),
-                                                     this.cuboidPanel.gettMainPointZ().getText());
-                Vector3d vectorA = convertToVector3d(this.cuboidPanel.gettVectorAX().getText(),
-                                                  this.cuboidPanel.gettVectorAY().getText(),
-                                                  this.cuboidPanel.gettVectorAZ().getText());
-                Vector3d vectorB = convertToVector3d(this.cuboidPanel.gettVectorBX().getText(),
-                                                  this.cuboidPanel.gettVectorBY().getText(),
-                                                  this.cuboidPanel.gettVectorBZ().getText());
-                Vector3d vectorC = convertToVector3d(this.cuboidPanel.gettVectorCX().getText(),
-                                                  this.cuboidPanel.gettVectorCY().getText(),
-                                                  this.cuboidPanel.gettVectorCZ().getText());
+                Point3d mainPoint = convertToPoint3d(this.cuboidPanel.getMainPointX(),
+                                                     this.cuboidPanel.getMainPointY(),
+                                                     this.cuboidPanel.getMainPointZ());
+                Vector3d vectorA = convertToVector3d(this.cuboidPanel.getVectorAX(),
+                                                  this.cuboidPanel.getVectorAY(),
+                                                  this.cuboidPanel.getVectorAZ());
+                Vector3d vectorB = convertToVector3d(this.cuboidPanel.getVectorBX(),
+                                                  this.cuboidPanel.getVectorBY(),
+                                                  this.cuboidPanel.getVectorBZ());
+                Vector3d vectorC = convertToVector3d(this.cuboidPanel.getVectorCX(),
+                                                  this.cuboidPanel.getVectorCY(),
+                                                  this.cuboidPanel.getVectorCZ());
                 CuboidGeneratorConfiguration cuboidGeneratorConfiguration =
                         new CuboidGeneratorConfiguration(mainPoint, vectorA, vectorB, vectorC);
 
-                Point3d centerPoint = convertToPoint3d(this.ballPanel.gettCenterPointX().getText(),
-                                                       this.ballPanel.gettCenterPointY().getText(),
-                                                       this.ballPanel.gettCenterPointZ().getText());
-                Double radius = convertToDouble(this.ballPanel.gettRadius().getText());
+                Point3d centerPoint = convertToPoint3d(this.ballPanel.getCenterPointX(),
+                                                       this.ballPanel.getCenterPointY(),
+                                                       this.ballPanel.getCenterPointZ());
+                Double radius = convertToDouble(this.ballPanel.getRadius());
                 BallGeneratorConfiguration ballGeneratorConfiguration = new BallGeneratorConfiguration(centerPoint, radius);
 
-                centerPoint = convertToPoint3d(this.spherePanel.gettCenterPointX().getText(),
-                                               this.spherePanel.gettCenterPointY().getText(),
-                                               this.spherePanel.gettCenterPointZ().getText());
-                radius = convertToDouble(this.spherePanel.gettRadius().getText());
+                centerPoint = convertToPoint3d(this.spherePanel.getCenterPointX(),
+                                               this.spherePanel.getCenterPointY(),
+                                               this.spherePanel.getCenterPointZ());
+                radius = convertToDouble(this.spherePanel.getRadius());
                 SphereGeneratorConfiguration sphereGeneratorConfiguration =
                         new SphereGeneratorConfiguration(centerPoint, radius);
 
-                Integer pointsNumber = convertToInteger(this.pointsNumberPanel.gettPointsNumber().getText());
+                Integer pointsNumber = convertToInteger(this.pointsNumberPanel.getPointsNumber());
 
-                Class simplificationType;
+                Object simplificationType;
                 Double accuracy = 0.0;
                 if (this.simplificationPanel.getSelectedSimplification().equals("voxelisation")) {
                     simplificationType = Voxelisation.class;
-                    accuracy = convertToDouble(this.simplificationPanel.gettAccuracy().getText());
+                    accuracy = convertToDouble(this.simplificationPanel.getAccuracy());
                 } else {
                     simplificationType = Octahedron.class;
                 }
@@ -142,9 +142,9 @@ public class ConfigurationWindow extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Błędne dane", "Uwaga", JOptionPane.WARNING_MESSAGE);
             }
         } else if (event.getSource() == this.simplificationPanel.getRbVoxelisation()) {
-            this.simplificationPanel.gettAccuracy().setEnabled(true);
+            this.simplificationPanel.setAcitivityOfAccuracyTextField(true);
         } else if (event.getSource() == this.simplificationPanel.getRbOctahedron()) {
-            this.simplificationPanel.gettAccuracy().setEnabled(false);
+            this.simplificationPanel.setAcitivityOfAccuracyTextField(false);
         }
     }
 }

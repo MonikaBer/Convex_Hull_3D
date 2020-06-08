@@ -53,19 +53,19 @@ public class BallPanel extends JPanel {
         this.add(this.tRadius);
     }
 
-    public JTextField gettCenterPointX() {
-        return tCenterPointX;
+    public String getCenterPointX() {
+        return tCenterPointX.getText().trim();
     }
 
-    public JTextField gettCenterPointY() {
-        return tCenterPointY;
+    public String getCenterPointY() {
+        return tCenterPointY.getText().trim();
     }
 
-    public JTextField gettCenterPointZ() {
-        return tCenterPointZ;
+    public String getCenterPointZ() {
+        return tCenterPointZ.getText().trim();
     }
 
-    public JTextField gettRadius() {
-        return tRadius;
+    public String getRadius() {
+        return tRadius.getText().trim();
     }
 }

@@ -19,12 +19,4 @@ public class ResultPanel extends JPanel {
         this.generatorType = generatorType;
         this.algorithm = algorithm;
     }
-
-    public String getGeneratorType() {
-        return generatorType;
-    }
-
-    public String getAlgorithm() {
-        return algorithm;
-    }
 }

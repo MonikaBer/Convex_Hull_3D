@@ -51,7 +51,14 @@ public class SimplificationPanel extends JPanel {
         return rbOctahedron;
     }
 
-    public JTextField gettAccuracy() {
-        return tAccuracy;
+    public String getAccuracy() {
+        return tAccuracy.getText().trim();
+    }
+
+    public void setAcitivityOfAccuracyTextField(boolean isActive) {
+        if (isActive)
+            this.tAccuracy.setEnabled(true);
+        else
+            this.tAccuracy.setEnabled(false);
     }
 }

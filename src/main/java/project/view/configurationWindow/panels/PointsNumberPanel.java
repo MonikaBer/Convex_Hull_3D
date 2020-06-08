@@ -23,7 +23,7 @@ public class PointsNumberPanel extends JPanel {
         this.add(this.tPointsNumber);
     }
 
-    public JTextField gettPointsNumber() {
-        return tPointsNumber;
+    public String getPointsNumber() {
+        return tPointsNumber.getText().trim();
     }
 }

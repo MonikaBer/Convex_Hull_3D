@@ -134,51 +134,51 @@ public class CuboidPanel extends JPanel {
         this.add(this.tVectorCZ);
     }
 
-    public JTextField gettMainPointX() {
-        return tMainPointX;
+    public String getMainPointX() {
+        return tMainPointX.getText().trim();
     }
 
-    public JTextField gettMainPointY() {
-        return tMainPointY;
+    public String getMainPointY() {
+        return tMainPointY.getText().trim();
     }
 
-    public JTextField gettMainPointZ() {
-        return tMainPointZ;
+    public String getMainPointZ() {
+        return tMainPointZ.getText().trim();
     }
 
-    public JTextField gettVectorAX() {
-        return tVectorAX;
+    public String getVectorAX() {
+        return tVectorAX.getText().trim();
     }
 
-    public JTextField gettVectorAY() {
-        return tVectorAY;
+    public String getVectorAY() {
+        return tVectorAY.getText().trim();
     }
 
-    public JTextField gettVectorAZ() {
-        return tVectorAZ;
+    public String getVectorAZ() {
+        return tVectorAZ.getText().trim();
     }
 
-    public JTextField gettVectorBX() {
-        return tVectorBX;
+    public String getVectorBX() {
+        return tVectorBX.getText().trim();
     }
 
-    public JTextField gettVectorBY() {
-        return tVectorBY;
+    public String getVectorBY() {
+        return tVectorBY.getText().trim();
     }
 
-    public JTextField gettVectorBZ() {
-        return tVectorBZ;
+    public String getVectorBZ() {
+        return tVectorBZ.getText().trim();
     }
 
-    public JTextField gettVectorCX() {
-        return tVectorCX;
+    public String getVectorCX() {
+        return tVectorCX.getText().trim();
     }
 
-    public JTextField gettVectorCY() {
-        return tVectorCY;
+    public String getVectorCY() {
+        return tVectorCY.getText().trim();
     }
 
-    public JTextField gettVectorCZ() {
-        return tVectorCZ;
+    public String getVectorCZ() {
+        return tVectorCZ.getText().trim();
     }
 }

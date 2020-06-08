@@ -5,14 +5,16 @@ public class Configuration {
     private CuboidGeneratorConfiguration cuboidGeneratorConfiguration;
     private BallGeneratorConfiguration ballGeneratorConfiguration;
     private SphereGeneratorConfiguration sphereGeneratorConfiguration;
-    private Class simplificationType;
+    private Object simplificationType;
     private Double accuracy;
     private Integer pointsNumber;
 
     public Configuration(CuboidGeneratorConfiguration cuboidGeneratorConfiguration,
                          BallGeneratorConfiguration ballGeneratorConfiguration,
                          SphereGeneratorConfiguration sphereGeneratorConfiguration,
-                         Class simplificationType, Double accuracy, Integer pointsNumber) {
+                         Object simplificationType,
+                         Double accuracy,
+                         Integer pointsNumber) {
 
         this.cuboidGeneratorConfiguration = cuboidGeneratorConfiguration;
         this.ballGeneratorConfiguration = ballGeneratorConfiguration;
@@ -34,15 +36,11 @@ public class Configuration {
         return sphereGeneratorConfiguration;
     }
 
-    public Class getSimplificationType() {
+    public Object getSimplificationType() {
         return simplificationType;
     }
 
-    public Double getAccuracy() {
-        return accuracy;
-    }
+    public Double getAccuracy() { return accuracy; }
 
-    public Integer getPointsNumber() {
-        return pointsNumber;
-    }
+    public Integer getPointsNumber() { return pointsNumber; }
 }

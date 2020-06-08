@@ -8,7 +8,7 @@ public class PointsSet {
     ArrayList<Point3d> points;
 
     public PointsSet() {
-        this.points = new ArrayList<Point3d>();
+        this.points = new ArrayList<>();
     }
 
     public ArrayList<Point3d> getPoints() {

@@ -1,5 +1,6 @@
 package project.model.algorithms;
 
+import project.model.Face;
 import project.model.Result;
 
 import javax.vecmath.Point3d;
@@ -13,7 +14,7 @@ public class IncrementalHullAlgorithm extends ConvexHullAlgorithm {
 
     @Override
     public Result startAlgorithm(ArrayList<Point3d> points) {
-        ArrayList<Point3d> convexHull = new ArrayList<>();
+        ArrayList<Face> convexHull = new ArrayList<>();
         //set runtime
         Double runtime = 0.0;
         return new Result(convexHull, runtime);
