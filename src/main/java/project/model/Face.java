@@ -4,9 +4,9 @@ import javax.vecmath.Point3d;
 
 public class Face {
 
-    private Point3d pointA;
-    private Point3d pointB;
-    private Point3d pointC;
+    protected Point3d pointA;
+    protected Point3d pointB;
+    protected Point3d pointC;
 
     public Face(Point3d pointA, Point3d pointB, Point3d pointC) {
         this.pointA = pointA;
@@ -24,5 +24,17 @@ public class Face {
 
     public Point3d getPointC() {
         return this.pointC;
+    }
+
+    public void setPointA(Point3d pointA) {
+        this.pointA = pointA;
+    }
+
+    public void setPointB(Point3d pointB) {
+        this.pointB = pointB;
+    }
+
+    public void setPointC(Point3d pointC) {
+        this.pointC = pointC;
     }
 }

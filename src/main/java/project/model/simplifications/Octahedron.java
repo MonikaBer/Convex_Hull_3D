@@ -1,5 +1,7 @@
 package project.model.simplifications;
 
+import project.Helper;
+
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 import java.util.ArrayList;
@@ -92,18 +94,12 @@ public class Octahedron extends PointsSetReducer {
     private void leaveOnlyUniqueExtremePoints(ArrayList<Point3d> extremePoints) {
         for (int i = 0; i < extremePoints.size(); i++) {
             for (int j = i+1; j < extremePoints.size(); j++) {
-                if (pointsEqual(extremePoints.get(i), extremePoints.get(j))) {
+                if (Helper.pointsEqual(extremePoints.get(i), extremePoints.get(j))) {
                     extremePoints.remove(j);
                     j--;
                 }
             }
         }
-    }
-
-    private boolean pointsEqual(Point3d point1, Point3d point2) {
-        if (point1.x == point2.x && point1.y == point2.y && point1.z == point2.z)
-            return true;
-        return false;
     }
 
     private boolean isPointInsideOctahedron(Point3d checkedPoint, ArrayList<Point3d> extremePoints) {

@@ -1,9 +1,9 @@
 package project.model;
 
 import project.model.algorithms.ConvexHullAlgorithm;
-import project.model.algorithms.GiftWrappingAlgorithm;
-import project.model.algorithms.IncrementalHullAlgorithm;
-import project.model.algorithms.NaiveAlgorithm;
+import project.model.algorithms.giftWrappingAlgorithm.GiftWrappingAlgorithm;
+import project.model.algorithms.incrementalHullAlgorithm.IncrementalHullAlgorithm;
+import project.model.algorithms.naiveAlgorithm.NaiveAlgorithm;
 import project.model.configuration.Configuration;
 import project.model.generators.BallGenerator;
 import project.model.generators.CuboidGenerator;

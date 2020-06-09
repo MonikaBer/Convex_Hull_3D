@@ -1,7 +1,8 @@
-package project.model.algorithms;
+package project.model.algorithms.naiveAlgorithm;
 
 import project.model.Face;
 import project.model.Result;
+import project.model.algorithms.ConvexHullAlgorithm;
 
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
