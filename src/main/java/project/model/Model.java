@@ -17,6 +17,7 @@ import project.model.simplifications.Octahedron;
 import project.model.simplifications.PointsSetReducer;
 import project.model.simplifications.Voxelisation;
 
+import javax.vecmath.Point3d;
 import java.util.ArrayList;
 
 public class Model {
@@ -69,14 +70,18 @@ public class Model {
         }
     }
 
-    public ArrayList<ArrayList<Result>> startAlgorithms() {
-        ArrayList<ArrayList<Result>> results = new ArrayList<>();
+    public ArrayList<Result> startAlgorithms() {
+        ArrayList<Result> results = new ArrayList<>();
         for (int i = 0; i < this.pointsSets.size(); i++) {
-            ArrayList<Result> onePointsSetResults = new ArrayList<>();
             for (int j = 0; j < this.algorithms.size(); j++) {
-                onePointsSetResults.add(this.algorithms.get(j).startAlgorithm(this.pointsSets.get(i).getPoints()));
+                if (j != 0) {
+                    ArrayList<Face> emptyPoints = new ArrayList<>();
+                    ArrayList<Point3d> emptyInputPoints = new ArrayList<>();
+                    results.add(new Result(emptyPoints, 1.0, emptyInputPoints));
+                    continue;
+                }
+                results.add(this.algorithms.get(j).startAlgorithm(this.pointsSets.get(i).getPoints()));
             }
-            results.add(onePointsSetResults);
         }
         return results;
     }

@@ -30,7 +30,7 @@ public class Controller implements ConfigurationListener, VisualizerListener {
 		this.model.createAlgorithmsList();
 		this.model.generatePoints();
 		this.model.reducePoints();
-		ArrayList<ArrayList<Result>> results = this.model.startAlgorithms();
+		ArrayList<Result> results = this.model.startAlgorithms();
 
 		this.visualizer.showResults(results);
 		this.visualizer.setVisible(true);

@@ -1,4 +1,4 @@
-package project.model.algorithms.giftWrappingAlgorithm;
+package project.model.algorithms;
 
 import javax.vecmath.Point3d;
 import java.util.ArrayList;

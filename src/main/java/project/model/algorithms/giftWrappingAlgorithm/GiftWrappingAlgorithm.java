@@ -5,9 +5,9 @@ import project.model.Face;
 import project.model.Result;
 import project.model.algorithms.AlgorithmsHelper;
 import project.model.algorithms.ConvexHullAlgorithm;
+import project.model.algorithms.Edge;
 
 import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
 import java.util.ArrayList;
 
 public class GiftWrappingAlgorithm extends ConvexHullAlgorithm {
@@ -85,8 +85,10 @@ public class GiftWrappingAlgorithm extends ConvexHullAlgorithm {
             i--;                    //?
         }
 
+        System.out.println("Gift Wrapping Algorithm finished");
+
         //measure runtime
-        return new Result(convexHullFaces, runtime);
+        return new Result(convexHullFaces, runtime, points);
     }
 
     private boolean isEdgesEqual(Point3d pointA, Point3d pointB, Edge edge) {

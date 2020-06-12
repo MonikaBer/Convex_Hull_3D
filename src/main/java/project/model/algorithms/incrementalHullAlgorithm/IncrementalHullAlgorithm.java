@@ -5,7 +5,7 @@ import project.model.Face;
 import project.model.Result;
 import project.model.algorithms.AlgorithmsHelper;
 import project.model.algorithms.ConvexHullAlgorithm;
-import project.model.algorithms.giftWrappingAlgorithm.Edge;
+import project.model.algorithms.Edge;
 
 import javax.vecmath.Point3d;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class IncrementalHullAlgorithm extends ConvexHullAlgorithm {
     @Override
     public Result startAlgorithm(ArrayList<Point3d> points) {
         ArrayList<Face> convexHullFaces = new ArrayList<>();
-        ArrayList<Point3d> convexHullPoints = new ArrayList<>();
+        ArrayList<Edge> openEdges = new ArrayList<>();
         //set runtime
         double runtime = 0.0;
 
@@ -28,10 +28,6 @@ public class IncrementalHullAlgorithm extends ConvexHullAlgorithm {
         Face face = AlgorithmsHelper.findFirstFace(points);
         //add first face to the convex hull
         convexHullFaces.add(face);
-        //add points from the first face to the convex hull points
-        convexHullPoints.add(face.getPointA());
-        convexHullPoints.add(face.getPointB());
-        convexHullPoints.add(face.getPointC());
         //find the fourth point of convex hull (by using gift wrapping method to this point)
         //edge to check
         Edge edge = new Edge(face.getPointA(), face.getPointB(), face.getPointC());
@@ -65,9 +61,6 @@ public class IncrementalHullAlgorithm extends ConvexHullAlgorithm {
             }
         }
 
-        //add the fourth point to the convex hull points
-        convexHullPoints.add(pointWithMinAngle);
-
         //add three new faces to convex hull faces
         convexHullFaces.add(new Face(edge.getPointsOnEdge().get(0),
                                      previousFace.getPointC(),
@@ -90,35 +83,121 @@ public class IncrementalHullAlgorithm extends ConvexHullAlgorithm {
                     (Helper.pointsEqual(points.get(j), pointWithMinAngle))) {
                 continue;
             }
-
-            tmpFaces.clear();
+            openEdges.clear();
+            //tmpFaces.clear();
             for (int f = 0; f < convexHullFaces.size(); f++) {
                 if (countTetrahedronVolume(convexHullFaces.get(f), points.get(j)) < 0) {
                     //face f is visible for point j, so add this face to tmpFaces
-                    tmpFaces.add(convexHullFaces.get(f));
+                    //tmpFaces.add(convexHullFaces.get(f));
+                    convexHullFaces.remove(f);
+                    f--;
+                    //add open edges if there are open (extreme)
+                    if (!isEdgeInOpenEdges(convexHullFaces.get(f).getPointA(), convexHullFaces.get(f).getPointB(),
+                            convexHullFaces.get(f).getPointC(), openEdges)) {
+
+                        openEdges.add(new Edge(convexHullFaces.get(f).getPointA(), convexHullFaces.get(f).getPointB(),
+                                convexHullFaces.get(f).getPointC()));
+                    }
+                    if (!isEdgeInOpenEdges(convexHullFaces.get(f).getPointA(), convexHullFaces.get(f).getPointC(),
+                            convexHullFaces.get(f).getPointB(), openEdges)) {
+
+                        openEdges.add(new Edge(convexHullFaces.get(f).getPointA(), convexHullFaces.get(f).getPointC(),
+                                convexHullFaces.get(f).getPointB()));
+                    }
+                    if (!isEdgeInOpenEdges(convexHullFaces.get(f).getPointB(), convexHullFaces.get(f).getPointC(),
+                            convexHullFaces.get(f).getPointA(), openEdges)) {
+
+                        openEdges.add(new Edge(convexHullFaces.get(f).getPointB(), convexHullFaces.get(f).getPointC(),
+                                convexHullFaces.get(f).getPointA()));
+                    }
                 }
             }
-            if (tmpFaces.size() == 0) {
+//            if (tmpFaces.size() == 0) {
+//                //no faces visible for point j, so discard point j, because this point is inside the convex hull
+//                continue;
+//            }
+            if (openEdges.size() == 0) {
                 //no faces visible for point j, so discard point j, because this point is inside the convex hull
                 continue;
             }
-
-            //TODO: find boundary edges among all visible tmpFaces
-            //TODO: for every boundary edge e:
-            // create face determined by e and point j and add this face to the convex hull faces
-            // and add point j to the convex hull points
-
-            for (int f = 0; f < tmpFaces.size(); f++) {
-                //TODO: delete face f from the convex hull faces
+            //point j is on the convex hull:
+            //TODO: find boundary edges among all visible faces
+            for (int e = 0; e < openEdges.size(); e++) {
+                // create face determined by e and point j and add this face to the convex hull faces
+                convexHullFaces.add(new Face(openEdges.get(e).getPointsOnEdge().get(0),
+                                             openEdges.get(e).getPointsOnEdge().get(1),
+                                             points.get(j)));
             }
         }
 
+        System.out.println("Incremental Hull Algorithm finished");
+
         //measure time
-        return new Result(convexHullFaces, runtime);
+        return new Result(convexHullFaces, runtime, points);
     }
 
     private double countTetrahedronVolume(Face face, Point3d point) {
-        //TODO: count tetrahedron volume
+        double[][] matrix = new double[4][4];
+        //complete matrix
+        matrix[0][0] = face.getPointA().x;
+        matrix[0][1] = face.getPointA().y;
+        matrix[0][2] = face.getPointA().z;
+        matrix[0][3] = 1;
 
+        matrix[1][0] = face.getPointB().x;
+        matrix[1][1] = face.getPointB().y;
+        matrix[1][2] = face.getPointB().z;
+        matrix[1][3] = 1;
+
+        matrix[2][0] = face.getPointC().x;
+        matrix[2][1] = face.getPointC().y;
+        matrix[2][2] = face.getPointC().z;
+        matrix[2][3] = 1;
+
+        matrix[3][0] = point.x;
+        matrix[3][1] = point.y;
+        matrix[3][2] = point.z;
+        matrix[3][3] = 1;
+
+        //count determinant of matrix
+        double det = matrix[0][0] * (matrix[1][1]*matrix[2][2]*matrix[3][3] +
+                                     matrix[2][1]*matrix[3][2]*matrix[1][3] +
+                                     matrix[3][1]*matrix[1][2]*matrix[2][3] -
+                                     matrix[2][1]*matrix[1][2]*matrix[3][3] -
+                                     matrix[1][1]*matrix[3][2]*matrix[2][3] -
+                                     matrix[3][1]*matrix[2][2]*matrix[1][3]) -
+
+                     matrix[0][1] * (matrix[1][0]*matrix[2][2]*matrix[3][3] +
+                                     matrix[2][0]*matrix[3][2]*matrix[1][3] +
+                                     matrix[3][0]*matrix[1][2]*matrix[2][3] -
+                                     matrix[2][0]*matrix[1][2]*matrix[3][3] -
+                                     matrix[1][0]*matrix[3][2]*matrix[2][3] -
+                                     matrix[3][0]*matrix[2][2]*matrix[1][3]) +
+
+                     matrix[0][2] * (matrix[1][0]*matrix[2][1]*matrix[3][3] +
+                                     matrix[2][0]*matrix[3][1]*matrix[1][3] +
+                                     matrix[3][0]*matrix[1][1]*matrix[2][3] -
+                                     matrix[2][0]*matrix[1][1]*matrix[3][3] -
+                                     matrix[1][0]*matrix[3][1]*matrix[2][3] -
+                                     matrix[3][0]*matrix[2][1]*matrix[1][3]) -
+
+                     matrix[0][3] * (matrix[1][0]*matrix[2][1]*matrix[3][2] +
+                                     matrix[2][0]*matrix[3][1]*matrix[1][2] +
+                                     matrix[3][0]*matrix[1][1]*matrix[2][2] -
+                                     matrix[2][0]*matrix[1][1]*matrix[3][2] -
+                                     matrix[1][0]*matrix[3][1]*matrix[2][2] -
+                                     matrix[3][0]*matrix[2][1]*matrix[1][2]);
+        return det;
+    }
+
+    private boolean isEdgeInOpenEdges(Point3d pointA, Point3d pointB, Point3d pointC, ArrayList<Edge> openEdges) {
+        for (int e = 0; e < openEdges.size(); e++) {
+            if (((pointA == openEdges.get(e).getPointsOnEdge().get(0) && pointB == openEdges.get(e).getPointsOnEdge().get(1)) ||
+                    (pointA == openEdges.get(e).getPointsOnEdge().get(1) && pointB == openEdges.get(e).getPointsOnEdge().get(0))) &&
+                    (pointC == openEdges.get(e).getKnownPointBeyondEdge())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

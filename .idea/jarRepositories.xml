@@ -12,9 +12,9 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="local-maven-repo" />
-      <option name="name" value="local-maven-repo" />
-      <option name="url" value="file:////home/moniaber/studia_sem6/aal_algorytm_powłoki/Convex_Hull_3D/local-maven-repo" />
+      <option name="id" value="repo" />
+      <option name="name" value="imagej" />
+      <option name="url" value="http://maven.imagej.net/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />

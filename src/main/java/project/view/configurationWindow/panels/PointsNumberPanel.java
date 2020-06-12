@@ -18,7 +18,7 @@ public class PointsNumberPanel extends JPanel {
         this.lPointsNumber.setBounds(20, 30, 120, 20);
         this.add(this.lPointsNumber);
 
-        this.tPointsNumber = new JTextField("100");
+        this.tPointsNumber = new JTextField("30");
         this.tPointsNumber.setBounds(160, 30, 80, 20);
         this.add(this.tPointsNumber);
     }
